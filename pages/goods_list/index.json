@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "searchInput":"../../components/searchInput/searchInput",
+    "Tabs":"../../components/Tabs/Tabs"
+  },
+  "navigationBarTitleText": "分类",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true
+}

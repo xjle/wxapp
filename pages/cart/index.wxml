@@ -1,0 +1,65 @@
+<!-- 收获地址 -->
+<view class="revice_address_row">
+  <!-- 不存在地址 -->
+  <view class="address_btn" wx:if="{{!addressData.userName}}">
+    <button bindtap="handleChooseAddress" type="primary" plain>获取收获地址</button>
+  </view>
+  <!-- 存在地址 -->
+  <view wx:else class="user_info_row">
+    <view class="user_info">
+      <view>{{addressData.userName}}</view>
+      <view>{{addressData.provinceName+addressData.cityName+addressData.countyName+addressData.detailInfo}}</view>
+    </view>
+    <view class="user_phone">{{addressData.telNumber}}</view>
+  </view>
+</view>
+
+<!-- 购物车 -->
+<view class="cart_content">
+  <view class="cart_main">
+    <block wx:if="{{cartData.length!==0}}">
+      <view class="cart_item" wx:for="{{cartData}}" wx:key="goods_id">
+      <view class="cart_check_box">
+        <checkbox-group data-id="{{item.goods_id}}" bindchange="handelItemChange">
+          <checkbox checked="{{item.checked}}"></checkbox>
+        </checkbox-group>
+      </view>
+      <navigator class="cart_img_warp">
+        <image mode="widthFix" src="{{item.goods_small_logo}}"></image>
+      </navigator>
+      <view class="cart_info_warp">
+        <view class="goods_name">{{item.goods_name}}</view>
+        <view class="goods_price_warp">
+          <view class="goods_price">￥ {{item.goods_price}}</view>
+          <view class="cart_num_tool">
+            <view class="num_edit" bindtap="handeItemNumEdit" data-id="{{item.goods_id}}" data-operation="{{-1}}">-</view>
+            <view class="goods_num">{{item.num}}</view>
+            <view class="num_edit" bindtap="handeItemNumEdit" data-id="{{item.goods_id}}" data-operation="{{1}}">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    </block>
+    <block wx:else>
+      <image src="../../icons/cart_empty.png" mode="widthFix"></image>
+    </block>
+  </view>
+</view>
+
+<!-- 底部工具栏 -->
+<view class="footer_tool">
+  <view class="all_check_box">
+    <checkbox-group  bindchange="handleAllChange">
+      <checkbox checked="{{allChecked}}">全选</checkbox>
+    </checkbox-group>
+  </view>
+  <view class="totle_price_wrap">
+    <view class="total_price">
+      合计: <text class="total_price_text">￥ {{ totalPrice }}</text>
+    </view>
+    <view>包含运费</view>
+  </view>
+  <view class="order_pay_wrap" bindtap="handlePay">
+    结算<text>({{totalNum}})</text>
+  </view>
+</view>

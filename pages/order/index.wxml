@@ -1,0 +1,5 @@
+<Tabs tabs="{{tabs}}" bindtabsItemChange="handleTabsItemChange">
+  <view class="order_main">
+    <view>暂无订单信息</view>
+  </view>
+</Tabs>
